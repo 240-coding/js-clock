@@ -5,6 +5,15 @@ greeting = document.querySelector(".js-greetings");
 const USER_LS = "currentUser",
 SHOWING_CN = "showing";
 
+function handleSubmit(event) {
+
+}
+
+function askForName() {
+    form.classList.add(SHOWING_CN);
+    form.addEventListener("submit", handleSubmit)
+}
+
 function paingGreeting(text) {
     form.classList.remove(SHOWING_CN);
     greeting.classList.add(SHOWING_CN);
@@ -14,7 +23,7 @@ function paingGreeting(text) {
 function loadName() {
     const currentUser = localStorage.getItem(USER_LS);
     if (currentUser === null) {
-        // she is not
+        askForName();
     } else {
         paingGreeting(currentUser);
     }
@@ -23,3 +32,4 @@ function loadName() {
 function init() {
     loadName(); 
 }
+init();
