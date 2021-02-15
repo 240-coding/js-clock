@@ -4,7 +4,18 @@ toDoList = document.querySelector(".js-toDoList");
 
 const TODOS_LS = "toDos";
 
-const toDos = [];
+let toDos = [];
+
+function deleteTodo(event) { // 투두 리스트 항목 삭제
+    const btn = event.target;
+    const li = btn.parentNode;
+    toDoList.removeChild(li); // li 태그 삭제
+    const cleanToDos = toDos.filter(function(toDo) { // 삭제된 항목이 없는 새 배열 생성
+        return toDo.id !== parseInt(li.id);
+    });
+    toDos = cleanToDos; // 기존 배열을 새로 만든 배열로 교체
+    savedToDos(); // 로컬 스토리지에 새 배열 저장
+}
 
 function savedToDos() { // 로컬 스토리지에 toDos 저장
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
@@ -16,6 +27,7 @@ function paintToDo(text) { // 새 항목 추가
     const span = document.createElement("span");
     const newId = toDos.length + 1;
     delBtn.innerText = "❌";
+    delBtn.addEventListener("click", deleteTodo); // 삭제 버튼을 클릭하면 이벤트 실행
     span.innerText = text;
     li.appendChild(delBtn);
     li.appendChild(span);
