@@ -5,13 +5,20 @@ greeting = document.querySelector(".js-greetings");
 const USER_LS = "currentUser",
 SHOWING_CN = "showing";
 
-function handleSubmit(event) {
+function saveName(text) {
+    localStorage.setItem(USER_LS, text);
+}
 
+function handleSubmit(event) {
+    event.preventDefault();
+    const currentValue = input.value;
+    paingGreeting(currentValue);
+    saveName(currentValue); // 사용자가 입력한 이름을 local storage에 저장
 }
 
 function askForName() {
     form.classList.add(SHOWING_CN);
-    form.addEventListener("submit", handleSubmit)
+    form.addEventListener("submit", handleSubmit);
 }
 
 function paingGreeting(text) {
