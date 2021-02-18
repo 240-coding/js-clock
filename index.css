@@ -17,6 +17,8 @@ body {
   margin-bottom: 60px;
 }
 
+/* greetings */
+
 .form,
 .greetings {
   display: none;
@@ -25,7 +27,27 @@ body {
 .showing {
   display: block;
   margin-bottom: 40px;
-  font-size: 28px;
+  font-size: 32px;
+}
+
+.form input {
+  font-family: "Noto Serif KR", serif;
+  font-size: 32px;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+  transition: 0.2s linear;
+}
+
+.form input::placeholder {
+  font-family: "Noto Serif KR", serif;
+  color: white;
+}
+
+.form input:focus {
+  border-bottom: solid 1px rgba(255, 255, 255, 1);
 }
 
 /* todo */
